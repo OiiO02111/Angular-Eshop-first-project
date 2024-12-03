@@ -1,0 +1,67 @@
+<div style="height: 100%;">
+    <div class="product-card shadow-sm " style="padding: 10px; margin-top: 20px; color: blue;">
+  
+      <nav class="navbar navbar-expand-lg navbar-light bg-light base">
+        <div class="container-fluid">
+          <a class="navbar-brand" style="font-size: 30px; " href="#">E-shop</a>
+          <div class="d-flex">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <span (click)="logoutAction()" class="nav-link" aria-current="page"
+                  style="font-size: 30px; cursor: pointer;">Logout</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <div class="subcontainer">
+      <div class="left">
+        <button class="mybutton" (click)="productAction()">Product</button>
+        <button class="mybutton" (click)="categoryAction()">Category</button>
+        <button class="mybutton" (click)="productAction()">User</button>
+        
+      </div>
+      <div class="right">
+        <div class="inOneline">
+          <div class="addNewProduct shadow-sm" (click)="addNewCategory()">Add new product</div>
+          <div class="addNewProduct shadow-sm" (click)="getAllCategory()">Refresh</div>
+        </div>
+        <div class="product-card shadow-sm" style="padding: 10px;">
+          <table class="table table-striped table-hover">
+            <br />
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="trClass" *ngFor="let category of category$ | async">
+                <td class="col">{{ category.id }}</td>
+                <td class="col">
+                  {{ category.name }}
+                </td>
+                <td class="col-3">
+                  <div class="d-flex justify-content-center align-items-center">
+                    <button type="button" (click)="updateCategory(category.id)" class=" Update btn-sm ms-2">
+                      *Edit*  
+                    </button>
+                    
+                  <button
+                    type="button"
+                    (click)="deleteCategory(category.id)"
+                    class="btn btn-danger btn-sm ms-2"
+                  >
+                    Delete
+                  </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>

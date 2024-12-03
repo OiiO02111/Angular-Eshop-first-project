@@ -1,0 +1,46 @@
+/* You can add global styles to this file, and also import other style files */
+@import "bootstrap/dist/css/bootstrap.css";
+
+/* Header style */
+body {
+    height: 100vh;
+}
+.base {
+    height: 100px;
+}
+
+.subcontainer {
+    display: flex;
+    flex-direction: row;
+    height: auto;
+}
+
+.left {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    align-items: center;
+    width: 20%;
+    height: auto ;
+    background-color: #f8f9fa;
+}
+
+.right {
+    width: 80%;
+}
+
+.mybutton {
+    width: 90%;
+    padding: 5px;
+    background: none;
+    border: 0.5px solid lightgrey;
+    font-size: 25px;
+    margin: 10px;
+}
+.mybutton:hover {
+    border-color: white;
+    background-color: black;
+    font-weight: bold;
+    color: white;
+    transition: 0.4s;
+}
