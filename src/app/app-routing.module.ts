@@ -7,6 +7,8 @@ import { ProductListComponent } from './component/Admin/products/product-list/pr
 import { ProductCreateComponent } from './component/Admin/products/product-create/product-create.component';
 import { ProductUpdateComponent } from './component/Admin/products/product-update/product-update.component';
 import { CategoryListComponent } from './component/Admin/category/category-list/category-list.component';
+import { CategoryCreateComponent } from './component/Admin/category/category-create/category-create.component';
+import { CategoryUpdateComponent } from './component/Admin/category/category-update/category-update.component';
 
  
 const routes: Routes = [
@@ -20,6 +22,9 @@ const routes: Routes = [
   { path: 'admin/products/create', component: ProductCreateComponent },
   { path: 'admin/products/update/:id', component: ProductUpdateComponent },
   { path: 'admin/category/list', component: CategoryListComponent } ,
+  { path: 'admin/category/create', component: CategoryCreateComponent } ,
+  // { path: 'admin/category/update', component: CategoryUpdateComponent } ,
+  
 
 ];
  

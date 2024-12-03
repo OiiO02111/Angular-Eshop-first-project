@@ -30,11 +30,12 @@ export class CategoryService implements OnInit {
         }
     }
 
+    addNewCategory(payload: any) : Observable<any> {
+        return this.http.post('/api/category', payload , { headers });
+    }
+
     getCategoryList() : Observable<any> {
-        const token = localStorage.getItem('token') ;
-        const headers = new HttpHeaders ({
-            authorization: `Bearer ${token}`,
-        });
+
         return this.http.get('/api/category', { headers })
     }
 

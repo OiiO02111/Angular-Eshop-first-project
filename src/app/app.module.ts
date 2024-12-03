@@ -37,7 +37,7 @@ import { CategoryUpdateComponent } from "./component/Admin/category/category-upd
         ProductCreateComponent ,
         ProductUpdateComponent ,
         CategoryListComponent ,
-        // CategoryCreateComponent ,
+        CategoryCreateComponent ,
         // CategoryUpdateComponent ,
     ] ,
     imports: [
