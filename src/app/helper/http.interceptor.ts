@@ -9,7 +9,7 @@ import { environment } from '../../environments/environment.development';
 export class BaseUrlInterceptor implements HttpInterceptor {
     intercept( 
             req: HttpRequest<any>, 
-            next: HttpHandler
+            next: HttpHandler ,
         ): Observable<HttpEvent<any>> {
         const apiReq = req.clone(
             {

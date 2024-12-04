@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Location } from '@angular/common';
@@ -6,6 +6,8 @@ import { Location } from '@angular/common';
 import { ProductService } from '../../../../service/product-service';
 import * as ProductActions from '../../../../store/product/product.action';
 import { selectCreateProductError } from '../../../../store/product/product.selector'
+import { Category } from '../../models/category';
+import { CategoryService } from '../../../../service/category-service';
 
 @Component({
   selector: 'app-product-create',
@@ -13,7 +15,7 @@ import { selectCreateProductError } from '../../../../store/product/product.sele
   templateUrl: './product-create.component.html',
   styleUrl: './product-create.component.css'
 })
-export class ProductCreateComponent {
+export class ProductCreateComponent implements OnInit{
   name: string =''
   price: number = 0
   producer: string = ''
@@ -21,20 +23,47 @@ export class ProductCreateComponent {
   category: string = ''
   validationErrors: any = []
 
-  
+  categories: Category[] = []
+  selectedCategoryId: number | null = null
+
   constructor(
     public productService: ProductService ,
+    private categoryService: CategoryService ,
     private router: Router ,
     private store: Store ,
     private location: Location ,
   ) {}
 
+  
+  ngOnInit(): void {
+    this.categoryService
+      .getCategoryList()
+      .subscribe({
+        next: (data) => {
+          console.log('product-create categorydata from server:', data)
+          this.categories = data.result ;
+        }
+      })
+  }
+
+  onCategoryChange(event: any) {
+    this.selectedCategoryId = Number(event.target.value) ;
+
+    const selectedCategory = this.categories.find(
+      (category) => category.id === this.selectedCategoryId
+    );
+    if(selectedCategory) {
+      this.category = selectedCategory.name ;
+    }
+  }
+
   sendAction() {
-    let payload: { product: {name: string; producer: string; country: string; price: number} } = {
-     product: { name: this.name ,
+    let payload: { product: {name: string; producer: string; country: string; price: number; category: string} } = {
+      product: { name: this.name ,
       producer: this.producer ,
       country: this.country ,
-      price: this.price ,  }   
+      price: this.price ,
+      category: this.category }   
     };
     console.log(' Here is the sendAction function! ', payload) 
 

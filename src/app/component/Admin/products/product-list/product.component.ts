@@ -32,6 +32,7 @@ export class ProductListComponent implements OnInit{
       console.log('This is the getAllproducts array from the server', data );
       this.productsSubject.next(
         data.result.map((item: Product) => {
+          console.log('---------->', this.products$)
           return this.productService.transform(item);
         })
       );
@@ -60,5 +61,16 @@ export class ProductListComponent implements OnInit{
   categoryAction() {
     this.router.navigateByUrl('/admin/category/list') ;
   }
-  
+  deleteProduct(id: number) {
+    this.productService.deleteCurrentProduct(id)
+      .subscribe({
+        next: (data) => {
+          console.log('Data from deleting backend:', data)
+        },
+        error: (error) => {
+          console.log('Error from deleting backend:', error)
+        }
+      });
+      this.getAllProducts();
+  }
 }

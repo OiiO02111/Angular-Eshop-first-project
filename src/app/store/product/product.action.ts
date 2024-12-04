@@ -2,7 +2,7 @@ import { createAction, props } from '@ngrx/store' ;
 
 export const createProduct = createAction (
     '[Product Page] create product' ,
-    props<{ product: { name: string ; producer: string ; country: string ; price: number  }}>()
+    props<{ product: { name: string ; producer: string ; country: string ; price: number ; category: string }}>()
 )
 
 export const createProductSuccess = createAction (

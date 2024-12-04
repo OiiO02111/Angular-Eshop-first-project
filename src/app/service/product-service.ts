@@ -10,12 +10,10 @@ import { selectAuthToken } from '../store/auth/auth.selectors'; // Adjust the pa
 import { Product } from "../component/Admin/models/product";
 import { Router } from "@angular/router";
 
-const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-  withCredentials: true,
-};
-
-
+const token = localStorage.getItem('token')
+const headers = new HttpHeaders({
+      authorization: `Bearer ${token}`, // Add token in Authorization header
+    });
 
 @Injectable({
     providedIn: 'root'
@@ -56,16 +54,22 @@ export class ProductService implements OnInit{
       
     
     getProductList() : Observable<any> {
-      const token = localStorage.getItem('token')
-      const headers = new HttpHeaders({
-            authorization: `Bearer ${token}`, // Add token in Authorization header
-          });
+
       return this.http.get('/api/products', { headers });
      
     }
 
     getProductById(id: number) : Observable<any> {
-      return this.http.get<Product>(`/api/products/${id}`) ;
+      return this.http.get<Product>(`/api/products/${id}`, {headers}) ;
+    }
+
+    deleteCurrentProduct(id: number): Observable<any> {
+      return this.http.delete(`/api/products/${id}`, { headers }) ;
+    }
+
+    update(id: number, payload: any) {
+      console.log('Update payload:', payload)
+      return this.http.patch(`/api/products/${id}`, payload, { headers } );
     }
 
     transform(data: any) : Product {

@@ -72,5 +72,6 @@ export class CategoryListComponent implements OnInit {
         }
       }
       ) ;
+      this.getAllCategory() ;
     }
 }
