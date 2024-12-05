@@ -24,7 +24,9 @@ export class ProductCreateComponent implements OnInit{
   validationErrors: any = []
 
   categories: Category[] = []
-  selectedCategoryId: number | null = null
+  selectedCategoryId: number = 1
+
+
 
   constructor(
     public productService: ProductService ,
@@ -32,7 +34,9 @@ export class ProductCreateComponent implements OnInit{
     private router: Router ,
     private store: Store ,
     private location: Location ,
-  ) {}
+  ) {
+
+  }
 
   
   ngOnInit(): void {
@@ -46,32 +50,24 @@ export class ProductCreateComponent implements OnInit{
       })
   }
 
-  onCategoryChange(event: any) {
-    this.selectedCategoryId = Number(event.target.value) ;
 
-    const selectedCategory = this.categories.find(
-      (category) => category.id === this.selectedCategoryId
-    );
-    if(selectedCategory) {
-      this.category = selectedCategory.name ;
-    }
-  }
 
   sendAction() {
+
     let payload: { product: {name: string; producer: string; country: string; price: number; category: string} } = {
-      product: { name: this.name ,
-      producer: this.producer ,
-      country: this.country ,
-      price: this.price ,
-      category: this.category }   
+       product: { name: this.name ,
+                  producer: this.producer ,
+                  country: this.country ,
+                  price: this.price ,
+                  category: this.category }   
     };
     console.log(' Here is the sendAction function! ', payload) 
 
     this.store.dispatch(ProductActions.createProduct(payload));
 
-    this.store.select(selectCreateProductError).subscribe((error) => {
-      console.log('this is the error from the server =>', error)
-    })
+    // this.store.select(selectCreateProductError).subscribe((error) => {
+    //   console.log('this is the error from the server =>', error)
+    // })
     
 
   }

@@ -54,12 +54,18 @@
 
           <div class="form-group">
             <label for="category-select">Select Category:</label>
-            <select id="category-select" name="category" class="form-select" (change)="onCategoryChange($event)">
+            <!-- <select id="category-select" name="category" class="form-select" (change)="onCategoryChange($event)">
               <option value="" disabled selected>Select a category</option>
               <option *ngFor="let category of categories" [value]="category.id">
                 {{ category.name }}
               </option>
-            </select>
+            </select> -->
+            <select id="category-select" name="category" class="form-select" [(ngModel)]="category" >
+              <option value="" disabled selected>Select a category</option>
+              <option *ngFor="let category of categories">
+                {{ category.name }}
+              </option>
+            </select> 
           </div>
           <button class="btn btn-success mt-3" type="submit" (click)="sendAction()">Send</button>
           <div class="form-group">

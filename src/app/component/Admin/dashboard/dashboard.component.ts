@@ -54,7 +54,9 @@ export class DashboardComponent implements OnInit {
     localStorage.removeItem('token');
     this.router.navigateByUrl('/');
   }
-
+  userAction() {
+    this.router.navigateByUrl('/admin/users/list') ;
+  }
 
 
  

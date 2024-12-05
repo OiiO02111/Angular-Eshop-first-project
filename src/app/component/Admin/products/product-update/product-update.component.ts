@@ -65,7 +65,7 @@ export class ProductUpdateComponent implements OnInit {
       (category) => category.id === this.selectedCategoryId
     );
     if(selectedCategory) {
-      this.category = selectedCategory.name ;
+      this.product.category = selectedCategory.name ;
     }
   }
 
@@ -79,6 +79,7 @@ export class ProductUpdateComponent implements OnInit {
     this.productService.update(currentId, payload).subscribe({
       next: (data) => {
         console.log('update res: ', data)
+        this.router.navigateByUrl('/admin/products/list')
       },
       error: (error) => {
         console.log('update err: ', error)

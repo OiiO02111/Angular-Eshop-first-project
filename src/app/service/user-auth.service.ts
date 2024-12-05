@@ -14,7 +14,10 @@ const httpOptions = {
     withCredentials: true,
   };
   
-
+  const token = localStorage.getItem('token')
+  const headers = new HttpHeaders({
+        authorization: `Bearer ${token}`, // Add token in Authorization header
+      });
 
 @Injectable({
     providedIn: 'root'
@@ -53,26 +56,26 @@ export class UserAuthService {
 
     getUser(): Observable<any> {
       const token = localStorage.getItem('token');
-        // Access the token from the NgRx store
-        // return this.store.select(selectAuthToken).pipe(
-        //   take(1), // Take the token value once
-        //   switchMap((token) => {
-        //     if (token) {
+
               const headers = new HttpHeaders({
                 authorization: `Bearer ${token}`,
               });
               return this.http.get('/api/auth/myinfo', { headers });
-        //     } else {
-        //       // Handle the case when there is no token in the store
-        //       throw new Error('No token found');
-        //     }
-        //   })
-        // );
+
       }
       
+    createNewUser(data: any): Observable<any> {
+      console.log("Here is the createNewUser of userAuthService", data)
+      return this.http.post('/api/users', data, { headers });
+    }
+    
+    getUserList() : Observable<any> {
+      console.log('Here is the getUserList of userAuthService')
+      return this.http.get('/api/users', { headers });
+    }
 
-    // logout(): Observable<any> {
-
-    //     return this.http.post(  `/api/auth/logout` , {} , { headers: {Authorization: 'Bearer ' + localStorage.getItem('token')}})
-    // }
+    deleteUser(id: number) : Observable<any> {
+      console.log('Here is the deleteUser of service')
+      return this.http.delete(`/api/users/${id}`, { headers })
+    }
 }

@@ -62,6 +62,9 @@ export class CategoryListComponent implements OnInit {
     categoryAction() {
       this.router.navigateByUrl('/admin/category/list') ;
     }
+    userAction() {
+      this.router.navigateByUrl('/admin/users/list') ;
+    }
     deleteCategory(id: number) {
       this.categoryService.deleteCategory(id).subscribe({
         next: (data) => {

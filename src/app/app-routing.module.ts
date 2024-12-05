@@ -9,6 +9,9 @@ import { ProductUpdateComponent } from './component/Admin/products/product-updat
 import { CategoryListComponent } from './component/Admin/category/category-list/category-list.component';
 import { CategoryCreateComponent } from './component/Admin/category/category-create/category-create.component';
 import { CategoryUpdateComponent } from './component/Admin/category/category-update/category-update.component';
+import { UserListComponent } from './component/Admin/user/user-list/user-list.component';
+import { UserCreateComponent } from './component/Admin/user/user-create/user-create.component';
+import { ChangeRoleComponent } from './component/Admin/user/change-role/change-role.component';
 
  
 const routes: Routes = [
@@ -23,7 +26,10 @@ const routes: Routes = [
   { path: 'admin/products/update/:id', component: ProductUpdateComponent },
   { path: 'admin/category/list', component: CategoryListComponent } ,
   { path: 'admin/category/create', component: CategoryCreateComponent } ,
-  // { path: 'admin/category/update', component: CategoryUpdateComponent } ,
+  { path: 'admin/category/update/:id', component: CategoryUpdateComponent } ,
+  { path: 'admin/users/list' , component: UserListComponent },
+  { path: 'admin/users/create', component: UserCreateComponent } ,
+  { path: 'admin/users/change-role/:id', component: ChangeRoleComponent } ,
   
 
 ];

@@ -1,0 +1,41 @@
+.addNewProduct {
+    background-color: lightgrey;
+    display: flex;
+    justify-content: center;
+    color: black;
+    margin: 5px;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: large;
+    font-weight: bolder;
+
+    cursor: pointer;
+
+}
+.addNewProduct:hover {
+    color: white;
+    background-color: black;
+    font-weight: bolder;
+}
+
+.trClass {
+    height: 100px;
+    font-size: larger;
+}
+
+.Update {
+    background-color: lightgreen;
+    font-size: small;
+    border-radius: 5px;
+}
+
+.Update:hover {
+    background-color: black;
+    color: white;
+    transition: 0.3s;    
+}
+.inOneline {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+}

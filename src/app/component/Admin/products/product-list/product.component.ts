@@ -32,7 +32,6 @@ export class ProductListComponent implements OnInit{
       console.log('This is the getAllproducts array from the server', data );
       this.productsSubject.next(
         data.result.map((item: Product) => {
-          console.log('---------->', this.products$)
           return this.productService.transform(item);
         })
       );
@@ -53,7 +52,9 @@ export class ProductListComponent implements OnInit{
     localStorage.removeItem('token');
     this.router.navigateByUrl('/');
   }
-
+  userAction() {
+    this.router.navigateByUrl('/admin/users/list') ;
+  }
   productAction() {
     this.router.navigateByUrl('/admin/products/list') ;
   }
