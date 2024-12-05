@@ -24,7 +24,7 @@
         </div>
         <div class="right">
             <div class="inOneline">
-                <!-- <div class="addNewProduct shadow-sm" (click)="addNewUser()">Add new User</div> -->
+                <div class="addNewProduct shadow-sm" (click)="addNewUser()">Add new User</div>
                 <div class="addNewProduct shadow-sm" (click)="getAllUsers()">Refresh</div>
             </div>
             <div class="product-card shadow-sm" style="padding: 10px;">
@@ -49,7 +49,7 @@
 
                             <td class="col-3">
                                 <div class="d-flex justify-content-center align-items-center">
-                                    <button type="button" (click)="updateUser(user.id)"
+                                    <button type="button" (click)="changeRole(user.id)"
                                         class=" Update btn-sm ms-2">
                                         Change Role
                                     </button>

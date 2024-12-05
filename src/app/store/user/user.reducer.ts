@@ -46,6 +46,31 @@ export const userReducer = createReducer(
     on(UserAction.deleteUser, (state, { id }) => ({
         ...state ,
         users: state.users.filter(user => user.id !== id) ,
-    }))
+    })),
+
+    on(UserAction.changeRole, (state) => ({
+        ...state ,
+        isLoading: true ,
+        error: null ,
+    })),
+
+    on(UserAction.changeRoleSuccess, (state,  { user, role } ) => {
+        console.log('userrole:', user)
+        const id = user.id;
+        let changeduser = { ...user, role: role }
+        console.log('changeduser', changeduser)
+        return {
+            ...state ,
+            isLoading: false ,
+            users: state.users.map( ( item ) => item.id === id ? changeduser : item ),
+        }
+    }) ,
     
+    on(UserAction.changeRoleFailure, (state, { error }) =>{ 
+        console.log(error)
+        return {
+            ...state ,
+            isLoading: false ,
+            error: error ,
+    }})
 )

@@ -44,8 +44,8 @@ export class UserListComponent implements OnInit {
     this.store.dispatch(UserAction.getUserList()) ;
   }
 
-  updateUser(id: number) {
-    this.router.navigate(['/admin/users/update', id]) ;
+  changeRole(id: number) {
+    this.router.navigate(['admin/users/change-role', id]) ;
   }
   deleteUser(id: number) {
     this.store.dispatch(UserAction.deleteUser({id}))

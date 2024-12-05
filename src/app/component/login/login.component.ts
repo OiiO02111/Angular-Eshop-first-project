@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { jwtDecode } from 'jwt-decode';
 
 import { UserAuthService } from '../../service/user-auth.service';
 import * as AuthActions from '../../store/auth/auth.actions' ;
@@ -58,6 +59,8 @@ export class LoginComponent implements OnInit{
         console.log('data ==> ' , data)
         localStorage.setItem('token', data.token);
         this.router.navigateByUrl('/auth/dashboard');
+        const decoded: any = jwtDecode(data.token);
+        console.log('decode', decoded)
         return data;
       }),
       error: (error => {

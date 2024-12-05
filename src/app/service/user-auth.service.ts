@@ -78,4 +78,7 @@ export class UserAuthService {
       console.log('Here is the deleteUser of service')
       return this.http.delete(`/api/users/${id}`, { headers })
     }
+    changeRole(id: number, payload: string) : Observable<any> {
+      return this.http.patch(`/api/users/${id}`, payload, { headers })
+    }
 }

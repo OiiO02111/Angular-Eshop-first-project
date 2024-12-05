@@ -31,6 +31,8 @@ import { ProductEffect } from "./store/product/product.effect";
 import { productReducer } from "./store/product/product.reducer";
 import { UserEffect } from './store/user/user.effect';
 import { userReducer } from "./store/user/user.reducer";
+import { UserCreateComponent } from "./component/Admin/user/user-create/user-create.component";
+import { ChangeRoleComponent } from "./component/Admin/user/change-role/change-role.component";
 
 @NgModule ({
     declarations: [
@@ -45,6 +47,8 @@ import { userReducer } from "./store/user/user.reducer";
         CategoryCreateComponent ,
         // CategoryUpdateComponent ,
         UserListComponent ,
+        UserCreateComponent ,
+        ChangeRoleComponent ,
     ] ,
     imports: [
         BrowserModule ,

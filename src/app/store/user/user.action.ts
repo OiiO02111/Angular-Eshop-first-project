@@ -36,3 +36,17 @@ export const deleteUser = createAction (
     props<{ id: number }>() ,
 )
 
+export const changeRole = createAction (
+    '[User] change role' ,
+    props<{ id: number, role: string }>() ,
+)
+
+export const changeRoleSuccess = createAction (
+    '[User] change role success' ,
+    props<{ user: User , role: string}>() ,
+)
+
+export const changeRoleFailure = createAction (
+    '[User] change role failure' ,
+    props<{ error: string }>() ,
+)

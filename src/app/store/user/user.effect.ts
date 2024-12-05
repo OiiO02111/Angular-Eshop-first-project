@@ -3,6 +3,7 @@ import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { UserAuthService } from "../../service/user-auth.service";
 import * as UserAction from '../user/user.action'
 import { catchError, mergeMap, map, of, tap, merge } from "rxjs";
+import { Router } from "@angular/router";
 
 
 @Injectable() 
@@ -12,6 +13,7 @@ export class UserEffect {
     constructor (
         private action$: Actions,
         private userService: UserAuthService ,
+        private router: Router
     ) {}
 
     createUser$ = createEffect(() => {
@@ -22,8 +24,14 @@ export class UserEffect {
             mergeMap(({ user }) => {
                 console.log('mergeMap user:', user)
                 return this.userService.createNewUser(user).pipe(
-                    map((createdUser) => UserAction.createUserSuccess({user:createdUser})),
-                    catchError((error) => of(UserAction.createUserFailure({error: error})))
+                    map((createdUser) => {
+                        this.router.navigateByUrl('/admin/users/list');
+                        return UserAction.createUserSuccess({user: createdUser.NewUserInfo}) ;
+                    }),
+                    catchError((error) => {
+                        console.log(error)
+                        return of(UserAction.createUserFailure({error: error}))
+                    } )
                 )
             })
         )
@@ -36,7 +44,7 @@ export class UserEffect {
             ofType(UserAction.getUserList) ,
             mergeMap(() => 
                 this.userService.getUserList().pipe (
-                    map((users) => UserAction.getUserListSuccess({ users: users.users})),
+                    map((response) => UserAction.getUserListSuccess({ users: response.users})),
                     catchError((error) => of(UserAction.getUserListFailure({ error })))
                 )
             )
@@ -49,7 +57,22 @@ export class UserEffect {
             .pipe(
                 ofType(UserAction.deleteUser) ,
                 mergeMap(({id}) => 
-                    this.userService.deleteUser(id)
+                    this.userService.deleteUser(id).pipe(
+                    )
+                )
+            )
+    })
+
+    changeRole$ = createEffect(() => {
+        console.log('Here is the changeRole$ of userEffect!')
+        return inject(Actions)
+            .pipe(
+                ofType(UserAction.changeRole) ,
+                mergeMap(
+                    (payload) => this.userService.changeRole(payload.id, payload.role).pipe(
+                        map((res) => UserAction.changeRoleSuccess({user: res.Result, role: payload.role})),
+                        catchError((error) => of(UserAction.changeRoleFailure(error))) ,
+                    )
                 )
             )
     })
