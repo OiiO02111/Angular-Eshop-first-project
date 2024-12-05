@@ -36,8 +36,7 @@ export class RegisterComponent implements OnInit{
     console.log('Here is registerAction function')
     this.userAuthService.register(payload).subscribe({
       next: ({data}) => {
-        console.log('Then ------------------------')
-        console.log(data)
+        console.log('Then ------------------------', data)
         this.router.navigateByUrl('/auth/login')
         console.log(data.token)
         // localStorage.setItem('token', data.token)
