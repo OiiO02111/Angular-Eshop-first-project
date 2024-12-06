@@ -45,7 +45,7 @@ import { ChangeRoleComponent } from "./component/Admin/user/change-role/change-r
         ProductUpdateComponent ,
         CategoryListComponent ,
         CategoryCreateComponent ,
-        // CategoryUpdateComponent ,
+        CategoryUpdateComponent ,
         UserListComponent ,
         UserCreateComponent ,
         ChangeRoleComponent ,

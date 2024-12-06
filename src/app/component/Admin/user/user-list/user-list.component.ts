@@ -26,6 +26,7 @@ export class UserListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    console.log('======>')
     this.users$ = this.store.select(selectUserList)
     this.users$.subscribe((users) => {
       if ( !users || users.length === 0) {
@@ -53,7 +54,7 @@ export class UserListComponent implements OnInit {
     //   next: (data) => console.log('data', data),
     //   error: (error) => console.log('error', error)
     // })
-    this.store.dispatch(UserAction.getUserList()) ;
+    // this.store.dispatch(UserAction.getUserList()) ;
   }
   goBack(): void {
     this.location.back();

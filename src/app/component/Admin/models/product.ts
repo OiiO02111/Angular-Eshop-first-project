@@ -4,7 +4,7 @@ export class Product {
     price: number ;
     producer: string ;
     country: string ;
-    category?: string ;
+    category: string ;
      constructor (
          id: number = 0 ,
          name: string = '',

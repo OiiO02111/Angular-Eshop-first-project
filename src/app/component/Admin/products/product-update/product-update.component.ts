@@ -6,6 +6,7 @@ import { Store } from '@ngrx/store';
 import { Product } from '../../models/product';
 import { Category } from '../../models/category';
 import { CategoryService } from '../../../../service/category-service';
+import * as ProductAction from '../../../../store/product/product.action'
 
 @Component({
   selector: 'app-product-update',
@@ -76,15 +77,16 @@ export class ProductUpdateComponent implements OnInit {
   updateAction() {
     const currentId = this.route.snapshot.params['id'] ;
     const payload = this.product ;
-    this.productService.update(currentId, payload).subscribe({
-      next: (data) => {
-        console.log('update res: ', data)
-        this.router.navigateByUrl('/admin/products/list')
-      },
-      error: (error) => {
-        console.log('update err: ', error)
-      }
-    }) ;
+    this.store.dispatch(ProductAction.updateProduct(payload))
+    // this.productService.update(currentId, payload).subscribe({
+    //   next: (data) => {
+    //     console.log('update res: ', data)
+    //     this.router.navigateByUrl('/admin/products/list')
+    //   },
+    //   error: (error) => {
+    //     console.log('update err: ', error)
+    //   }
+    // }) ;
   }
 
 

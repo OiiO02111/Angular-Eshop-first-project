@@ -1,11 +1,11 @@
 export interface ProductState {
     products: any[] ;
-    createProductError: string | null ;
+    error: string | null ;
     isLoading: boolean ;
 }
 
 export const initialProductState: ProductState = {
     products: [] ,
-    createProductError: null ,
+    error: null ,
     isLoading: false ,
 };

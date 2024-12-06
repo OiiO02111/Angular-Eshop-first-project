@@ -34,6 +34,10 @@ export class CategoryService implements OnInit {
         return this.http.post('/api/category', payload , { headers });
     }
 
+    updateCategory(id: number , payload: any) : Observable<any> {
+        return this.http.patch(`/api/category/${id}`, payload , { headers })
+    }
+
     getCategoryList() : Observable<any> {
 
         return this.http.get('/api/category', { headers })

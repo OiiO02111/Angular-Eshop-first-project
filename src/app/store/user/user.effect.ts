@@ -26,7 +26,7 @@ export class UserEffect {
                 return this.userService.createNewUser(user).pipe(
                     map((createdUser) => {
                         this.router.navigateByUrl('/admin/users/list');
-                        return UserAction.createUserSuccess({user: createdUser.NewUserInfo}) ;
+                        return UserAction.createUserSuccess({user:{ ...createdUser.NewUserInfo, role:user.role}}) ;
                     }),
                     catchError((error) => {
                         console.log(error)
@@ -57,8 +57,7 @@ export class UserEffect {
             .pipe(
                 ofType(UserAction.deleteUser) ,
                 mergeMap(({id}) => 
-                    this.userService.deleteUser(id).pipe(
-                    )
+                    this.userService.deleteUser(id)
                 )
             )
     })

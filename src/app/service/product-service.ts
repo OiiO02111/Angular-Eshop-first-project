@@ -67,7 +67,7 @@ export class ProductService implements OnInit{
       return this.http.delete(`/api/products/${id}`, { headers }) ;
     }
 
-    update(id: number, payload: any) {
+    update(id: number, payload: any): Observable<any> {
       console.log('Update payload:', payload)
       return this.http.patch(`/api/products/${id}`, payload, { headers } );
     }
