@@ -12,6 +12,7 @@
     cursor: pointer;
 
 }
+
 .addNewProduct:hover {
     color: white;
     background-color: black;
@@ -32,8 +33,9 @@
 .Update:hover {
     background-color: black;
     color: white;
-    transition: 0.3s;    
+    transition: 0.3s;
 }
+
 .inOneline {
     display: flex;
     flex-direction: row;

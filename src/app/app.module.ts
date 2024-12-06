@@ -7,8 +7,9 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from "@ngrx/effects";
 import { StoreModule } from "@ngrx/store";
-// import { Location } from "@angular/common";
-
+import { MatPaginatorModule } from '@angular/material/paginator'
+// import { Location } from "@angular/common
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module' ;
 import { BaseUrlInterceptor } from "./helper/http.interceptor";
 import { Reducer } from "@reduxjs/toolkit";
@@ -64,6 +65,8 @@ import { ChangeRoleComponent } from "./component/Admin/user/change-role/change-r
         StoreModule.forFeature('user', userReducer ) ,
         // EffectsModule.forFeature([AuthEffects]),
         StoreDevtoolsModule.instrument({ maxAge: 25 }),
+        BrowserAnimationsModule,
+        MatPaginatorModule ,
         AppRoutingModule ,
         FormsModule ,
         ReactiveFormsModule ,

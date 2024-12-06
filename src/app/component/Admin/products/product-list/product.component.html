@@ -24,6 +24,13 @@
     </div>
     <div class="right">
       <div class="inOneline">
+        <mat-paginator
+        [length]="totalItems$ | async"
+        [pageSize]="pageSize$ | async"
+        [pageIndex]="currentPage$ | async"
+        [pageSizeOptions]="(pageSizeOptions$ | async) || [5, 10, 20]"
+        (page)="pageChanged($event)">
+      </mat-paginator>
         <div class="addNewProduct shadow-sm" (click)="addNewProduct()">Add new product</div>
         <div class="addNewProduct shadow-sm" (click)="getAllProducts()">Refresh</div>
       </div>
@@ -41,8 +48,8 @@
             </tr>
           </thead>
           <tbody>
-            <tr class="trClass" *ngFor="let product of products$ | async">
-              <td class="col">{{ product.id }}</td>
+            <tr class="trClass" *ngFor="let product of displayData$ | async; let i = index">
+              <td class="col">{{ i + pageSize$.value * currentPage$.value + 1 }}</td>
               <td class="col">
                 {{ product.name }}
               </td>
@@ -71,4 +78,5 @@
       </div>
     </div>
   </div>
+
 </div>

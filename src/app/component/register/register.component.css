@@ -1,0 +1,17 @@
+.mycard {
+    width: 100%
+}
+
+.user {
+    width: 180px;
+    height: 200px;
+    background-image: url(../../../src/123.png);
+    background-size: 105%;
+    background-repeat: no-repeat;
+
+
+}
+.image-container {
+    display: flex ;
+    justify-content: center ;
+}

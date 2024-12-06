@@ -7,9 +7,6 @@ import { __makeTemplateObject } from "tslib";
 import { Category } from "../component/Admin/models/category";
 
 const token = localStorage.getItem('token');
-const headers = new HttpHeaders ({
-    authorization: `Bearer ${token}`,
-});
 
 @Injectable ({
     providedIn : 'root'
@@ -17,12 +14,19 @@ const headers = new HttpHeaders ({
 
 export class CategoryService implements OnInit {
 
+    headers: HttpHeaders;
+
     constructor(
         private store: Store ,
         private http: HttpClient ,
         private router: Router ,
 
-    ) {}
+    ) {
+        const token = localStorage.getItem('token');
+        this.headers = new HttpHeaders ({
+            authorization: `Bearer ${token}`,
+        });
+    }
 
     ngOnInit(): void {
         if (!localStorage.getItem('token')) {
@@ -31,16 +35,16 @@ export class CategoryService implements OnInit {
     }
 
     addNewCategory(payload: any) : Observable<any> {
-        return this.http.post('/api/category', payload , { headers });
+        return this.http.post('/api/category', payload , { headers: this.headers });
     }
 
     updateCategory(id: number , payload: any) : Observable<any> {
-        return this.http.patch(`/api/category/${id}`, payload , { headers })
+        return this.http.patch(`/api/category/${id}`, payload , { headers: this.headers })
     }
 
     getCategoryList() : Observable<any> {
 
-        return this.http.get('/api/category', { headers })
+        return this.http.get('/api/category', { headers: this.headers })
     }
 
     getCategoryById(id: number) : Observable<any> {
@@ -48,7 +52,7 @@ export class CategoryService implements OnInit {
       }
     deleteCategory(id: number): Observable<any> {
         console.log('category-service deleteCategory')
-        return this.http.delete(`/api/category/${id}`, { headers });
+        return this.http.delete(`/api/category/${id}`, { headers: this.headers });
     }
     transform(data: any) : Category {
         return {
