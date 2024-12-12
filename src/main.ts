@@ -1,5 +1,5 @@
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { AppModule } from './app/app.module' ;
+import { AppModule } from './app/modules/app.module' ;
 // import axios from 'axios';
 import { environment } from './environments/environment.development';
 import { CategoryListComponent } from './app/component/Admin/category/category-list/category-list.component';

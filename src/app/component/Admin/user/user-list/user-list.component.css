@@ -1,8 +1,8 @@
 .addNewProduct {
-    background-color: lightgrey;
+    background-color: rgb(181, 241, 157);
     display: flex;
     justify-content: center;
-    color: black;
+    color: rgb(0, 0, 0);
     margin: 5px;
     padding: 10px;
     border-radius: 10px;

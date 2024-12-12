@@ -11,29 +11,29 @@ import { MatPaginatorModule } from '@angular/material/paginator'
 // import { Location } from "@angular/common
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module' ;
-import { BaseUrlInterceptor } from "./helper/http.interceptor";
+import { BaseUrlInterceptor } from "../helper/http.interceptor";
 import { Reducer } from "@reduxjs/toolkit";
 //components
-import { AppComponent } from "./app.component";
-import { UserListComponent } from "./component/Admin/user/user-list/user-list.component";
-import { LoginComponent } from "./component/login/login.component";
-import { RegisterComponent } from "./component/register/register.component";
-import { DashboardComponent } from "./component/Admin/dashboard/dashboard.component";
-import { ProductCreateComponent } from "./component/Admin/products/product-create/product-create.component";
-import { ProductListComponent } from "./component/Admin/products/product-list/product.component";
-import { ProductUpdateComponent } from "./component/Admin/products/product-update/product-update.component";
-import { CategoryListComponent } from "./component/Admin/category/category-list/category-list.component";
-import { CategoryCreateComponent } from "./component/Admin/category/category-create/category-create.component";
-import { CategoryUpdateComponent } from "./component/Admin/category/category-update/category-update.component";
+import { AppComponent } from "../app.component";
+import { UserListComponent } from "../component/Admin/user/user-list/user-list.component";
+import { LoginComponent } from "../component/login/login.component";
+import { RegisterComponent } from "../component/register/register.component";
+import { DashboardComponent } from "../component/Admin/dashboard/dashboard.component";
+import { ProductCreateComponent } from "../component/Admin/products/product-create/product-create.component";
+import { ProductListComponent } from "../component/Admin/products/product-list/product.component";
+import { ProductUpdateComponent } from "../component/Admin/products/product-update/product-update.component";
+import { CategoryListComponent } from "../component/Admin/category/category-list/category-list.component";
+import { CategoryCreateComponent } from "../component/Admin/category/category-create/category-create.component";
+import { CategoryUpdateComponent } from "../component/Admin/category/category-update/category-update.component";
 //store
-import { authReducer } from "./store/auth/auth.reducer";
-import { AuthEffects } from "./store/auth/auth.effects";
-import { ProductEffect } from "./store/product/product.effect";
-import { productReducer } from "./store/product/product.reducer";
-import { UserEffect } from './store/user/user.effect';
-import { userReducer } from "./store/user/user.reducer";
-import { UserCreateComponent } from "./component/Admin/user/user-create/user-create.component";
-import { ChangeRoleComponent } from "./component/Admin/user/change-role/change-role.component";
+import { authReducer } from "../store/auth/auth.reducer";
+import { AuthEffects } from "../store/auth/auth.effects";
+import { ProductEffect } from "../store/product/product.effect";
+import { productReducer } from "../store/product/product.reducer";
+import { UserEffect } from '../store/user/user.effect';
+import { userReducer } from "../store/user/user.reducer";
+import { UserCreateComponent } from "../component/Admin/user/user-create/user-create.component";
+import { ChangeRoleComponent } from "../component/Admin/user/change-role/change-role.component";
 
 @NgModule ({
     declarations: [

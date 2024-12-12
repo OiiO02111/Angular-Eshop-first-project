@@ -1,7 +1,8 @@
 .addNewProduct {
-    background-color: lightgrey;
+    background-color: rgb(73, 196, 236);
     display: flex;
     justify-content: center;
+    align-items: center;
     color: black;
     margin: 5px;
     padding: 10px;
@@ -40,4 +41,68 @@
     display: flex;
     flex-direction: row;
     justify-content: end;
+    align-items: center;
 }
+
+.custom-paginator {
+    width: 260px;
+    background-color: #f0f0f0; /* Light gray background */
+    border: 1px solid black; /* Blue border */
+    border-radius: 4px; /* Rounded corners */
+    padding: 2px 8px;    /* Adjust padding */
+    color: #333;         /* Text color */
+    font-weight: bold;   /* Make text bold */
+    
+  }
+  
+  /* Style the dropdown options when opened */
+.custom-paginator ::ng-deep .mat-select-panel {
+    background-color: #ffffff; /* White background */
+    color: #333;               /* Text color */
+    border: 1px solid #3f51b5; /* Blue border */
+  }
+  
+
+.custom-dropdown {
+  position: relative;
+  width: 100%;
+}
+
+.selected-items {
+  cursor: pointer;
+  padding: 5px;
+  border: 3px solid #ccc;
+  margin: 5px;
+  margin-right: 30px;
+  border-radius: 4px;
+  text-align: end;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  max-height: 200px;
+  overflow-y: auto;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  display: block;
+}
+
+.dropdown-item {
+  padding: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-item:hover {
+  background-color: #f1f1f1;
+}
+
+.dropdown-item input {
+  margin-right: 10px;
+}
+

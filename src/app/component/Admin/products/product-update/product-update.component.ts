@@ -21,12 +21,14 @@ export class ProductUpdateComponent implements OnInit {
   country: string = ''
   category: string = ''
   validationErrors: any = []
+  categoryId: number | undefined = 0
 
   id: number = 0 
   product: Product = new Product
 
   categories: Category[] = []
   selectedCategoryId: number | null = null;
+  
 
   constructor( private productService: ProductService ,
                private categoryService: CategoryService,
@@ -48,11 +50,15 @@ export class ProductUpdateComponent implements OnInit {
 
     this.id = this.route.snapshot.params['id'] ;
     this.productService.getProductById(this.id).subscribe({
-       next: (data) => {console.log('Here is the getProductById and the data from server is:', data)
+       next: (data) => {console.log('Here is the getProductById and the data from server is:', data.result)
        this.product = this.productService.transform(data.result) ;
-       console.log('converted data-product:', this.product)},
+       console.log('converted data-product:', this.product),
+       console.log('The categories', this.categories)
+       this.categoryId = this.categories?.find((item: Category) => item.name === this.product.category )?.id;  
+       console.log('the categoryId', this.categoryId)
+      },
        error: (error) => {
-        console.log('The error of the current product state:' , error)
+        console.log('The error of the current product state:' , error) 
        }
     }
 
@@ -68,6 +74,7 @@ export class ProductUpdateComponent implements OnInit {
     if(selectedCategory) {
       this.product.category = selectedCategory.name ;
     }
+
   }
 
   goBack() {
@@ -77,7 +84,8 @@ export class ProductUpdateComponent implements OnInit {
   updateAction() {
     const currentId = this.route.snapshot.params['id'] ;
     const payload = this.product ;
-    this.store.dispatch(ProductAction.updateProduct(payload))
+    this.store.dispatch(ProductAction.updateProduct(payload));
+    this.location.back()
     // this.productService.update(currentId, payload).subscribe({
     //   next: (data) => {
     //     console.log('update res: ', data)
