@@ -33,7 +33,7 @@ export class DashboardComponent implements OnInit {
           next: (data) => {
             console.log('------>>>', data);
             this.user = data.user; // Store user data
-            this.router.navigateByUrl('/auth/dashboard');
+            this.router.navigateByUrl('/admin/dashboard');
           },
           error: () => {
             this.router.navigateByUrl('/'); // Redirect if fetching user fails

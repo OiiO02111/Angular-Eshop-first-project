@@ -1,0 +1,76 @@
+<div class='card'>
+    <div class='card-header'>
+
+    </div>
+
+    <div class='card-body'>
+        <div class='row'>
+            <div class='col-md-4'>
+                <img class='center-block img-responsive ' src="../../src/img1.jpg" alt="Description">
+            </div>
+            <div class='col-md-8'>
+                <div class='row'>
+                    <div class='col-md-4'>Product Name:</div>
+                    <div class='col-md-8'>{{ product.name }}</div>
+                </div>
+                <div class='row'>
+                    <div class='col-md-4'>Price:</div>
+                    <div class='col-md-8'>{{ product.price }}</div>
+                </div>
+                <div class='row'>
+                    <div class='col-md-4'>Producer:</div>
+                    <div class='col-md-8'>{{ product.producer }}</div>
+                </div>
+                <div class='row'>
+                    <div class='col-md-4'>Country:</div>
+                    <div class='col-md-8'>{{ product.country }}</div>
+                </div>
+                <div class='row'>
+                    <div class='col-md-4'>Category:</div>
+                    <div class='col-md-8'>{{ product.category }}</div>
+                </div>
+                <div class='row'>
+                    <div class='col-md-4'>5 Star Rating:</div>
+                    <div class='col-md-8'>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <label for="quantity" class="form-label">Quantity:</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="quantity"
+                      value="1"
+                      min="1"
+                      max="100"
+                      style="width: 80px"
+                      #quantityInput
+                    />
+                  </div>
+                  <button
+                  class="btn btn-info btn-lg mb-3 me-2"
+                
+                >
+                  <i class="bi bi-cart-plus"></i>
+                  Add 
+                </button>
+            </div>
+
+
+        </div>
+    </div>
+
+    <div class='card-footer'>
+        <button class='btn btn-outline-secondary' style='width:80px' (click)="goback()">
+            <i class='fa fa-chevron-left'></i> Back
+        </button>
+        <button class='btn btn-outline-secondary' style='width:80px' (click)="goback()">
+            <i class='fa fa-shopping-cart'></i> Cart
+        </button>
+    </div>
+</div>

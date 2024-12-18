@@ -21,7 +21,7 @@ export class RegisterComponent implements OnInit{
  
   ngOnInit(): void {
     // if(localStorage.getItem('token') != "" && localStorage.getItem('token') != null){
-    //   this.router.navigateByUrl('/auth/dashboard')
+    //   this.router.navigateByUrl('/admin/dashboard')
     // }
   }
  

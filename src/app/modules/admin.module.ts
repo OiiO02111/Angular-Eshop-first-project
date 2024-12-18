@@ -34,18 +34,42 @@ import { UserEffect } from '../store/user/user.effect';
 import { userReducer } from "../store/user/user.reducer";
 import { UserCreateComponent } from "../component/Admin/user/user-create/user-create.component";
 import { ChangeRoleComponent } from "../component/Admin/user/change-role/change-role.component";
-import { AdminModule } from "./admin.module";
-import { LandingPageComponent } from "../component/landing-page/landing-page.component";
-import { ProductCardComponent } from "../product.card/product.card.component";
-import { ProductDetailComponent } from "../product-detail/product-detail.component";
+import { Route, RouterModule, Routes } from "@angular/router";
+import { AuthGuard } from "../component/auth/auth.guard";
+
+const route: Routes = [
+    {
+        path: 'admin' ,
+        canActivate: [AuthGuard],
+        data: { role: 'ADMIN' } ,
+        children: [
+            { path: 'products/list', component: ProductListComponent } ,
+            { path: 'products/create', component: ProductCreateComponent } ,
+            { path: 'products/update/:id', component: ProductUpdateComponent } ,
+            { path: 'category/list', component: CategoryListComponent } ,
+            { path: 'category/create', component: CategoryCreateComponent } ,
+            { path: 'category/update/:id', component: CategoryUpdateComponent } ,
+            { path: 'users/list' , component: UserListComponent },
+            { path: 'users/create', component: UserCreateComponent } ,
+            { path: 'users/change-role/:id', component: ChangeRoleComponent } ,
+            { path: 'dashboard', component: DashboardComponent },
+
+        ]
+    }
+] ;
 
 @NgModule ({
     declarations: [
-        AppComponent ,
-        LoginComponent ,
-        RegisterComponent ,
-        LandingPageComponent ,
-        ProductDetailComponent ,
+        DashboardComponent ,
+        ProductListComponent ,
+        ProductCreateComponent ,
+        ProductUpdateComponent ,
+        CategoryListComponent ,
+        CategoryCreateComponent ,
+        CategoryUpdateComponent ,
+        UserListComponent ,
+        UserCreateComponent ,
+        ChangeRoleComponent ,
     ] ,
     imports: [
         BrowserModule ,
@@ -53,26 +77,25 @@ import { ProductDetailComponent } from "../product-detail/product-detail.compone
         EffectsModule.forRoot(),
         // This would normally contain the root state, e.g., `StoreModule.forRoot({ app: appReducer })`
         // StoreModule.forRoot({ auth: authReducer }),
+        EffectsModule.forFeature([AuthEffects]) ,
+        StoreModule.forFeature('auth', authReducer) ,// Registering 'auth' feature
+        EffectsModule.forFeature([ProductEffect]),
+        StoreModule.forFeature('product', productReducer ),
+        EffectsModule.forFeature([UserEffect]) ,
+        StoreModule.forFeature('user', userReducer ) ,
         // EffectsModule.forFeature([AuthEffects]),
-        // StoreDevtoolsModule.instrument({ maxAge: 25 }),
+        StoreDevtoolsModule.instrument({ maxAge: 25 }),
+        
         BrowserAnimationsModule,
         MatPaginatorModule ,
         AppRoutingModule ,
         FormsModule ,
         ReactiveFormsModule ,
-        HttpClientModule ,
-
-        ProductCardComponent,
-
-        //modules
-        AdminModule ,
+        RouterModule.forChild(route)
     ] ,
-    providers: [
-        { provide: HTTP_INTERCEPTORS, useClass: BaseUrlInterceptor, multi: true },
-        Location ,
-      ],
-    bootstrap: [AppComponent] ,
-
+    exports: [
+        RouterModule ,
+    ]
 })
 
-export class AppModule { }
+export class AdminModule { }

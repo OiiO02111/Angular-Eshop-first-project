@@ -1,0 +1,19 @@
+.row {
+    padding: 10px ;
+    font-size: 17px;
+}
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+}
+.center-block {
+    border: 1px solid black ;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 10px;
+   width: 80%;
+   height: 100%;
+}
+.card-body {
+    padding: 30px;
+}

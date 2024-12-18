@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit{
  
   ngOnInit(): void {
     // if(localStorage.getItem('token') != "" && localStorage.getItem('token') != null){
-    //   this.router.navigateByUrl('/auth/dashboard')
+    //   this.router.navigateByUrl('/admin/dashboard')
     // }
   }
  
@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit{
     //     console.log('validation error ==>', this.validationErrors)
     //     if (!error) {
     //       // Navigate to the dashboard if login is successful
-    //       this.router.navigateByUrl('/auth/dashboard');
+    //       this.router.navigateByUrl('/admin/dashboard');
     //     }
     //   }
     //  );
@@ -58,7 +58,8 @@ export class LoginComponent implements OnInit{
       next: ((data) => {
         console.log('data ==> ' , data)
         localStorage.setItem('token', data.token);
-        this.router.navigateByUrl('/auth/dashboard');
+        localStorage.setItem('role', data.role)
+        this.router.navigateByUrl('/admin/dashboard');
         const decoded: any = jwtDecode(data.token);
         console.log('decode', decoded)
         return data;

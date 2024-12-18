@@ -1,0 +1,32 @@
+<div class="product-card shadow-lg" (click)="gotoProductDetail()">
+    <div>
+        <img class="image"  
+            src="../../src/img1.jpg" alt="kkk">
+    </div>
+    <div class="p-3">
+      <span class="category-badge mb-2 d-inline-block">
+        {{ product.category }}
+      </span>
+      <h6 class="product-name mb-1">{{ product.name }}</h6>
+  
+      <!-- Spacer to push the footer down -->
+      <div class="flex-grow-1"></div>
+      <div class="sticky-footer">
+        <div class="rating-stars mb-2">
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <span class="text-muted ms-2">(5)</span>
+        </div>
+        <div class="d-flex justify-content-between align-items-center">
+          <span class="price">{{ product.price }}$</span>
+          <button class="btn cart-btn">
+            <i class="bi bi-cart-plus"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
