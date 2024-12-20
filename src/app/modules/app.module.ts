@@ -38,6 +38,8 @@ import { AdminModule } from "./admin.module";
 import { LandingPageComponent } from "../component/landing-page/landing-page.component";
 import { ProductCardComponent } from "../product.card/product.card.component";
 import { ProductDetailComponent } from "../product-detail/product-detail.component";
+import { CartDetailComponent } from "../component/user/cart/cart.detail/cart.detail.component";
+import { CartProductCardComponent } from "../component/user/cart/cart.product-card/cart.product-card.component";
 
 @NgModule ({
     declarations: [
@@ -46,26 +48,31 @@ import { ProductDetailComponent } from "../product-detail/product-detail.compone
         RegisterComponent ,
         LandingPageComponent ,
         ProductDetailComponent ,
+        CartDetailComponent ,
     ] ,
     imports: [
+        AdminModule ,
+
         BrowserModule ,
         StoreModule.forRoot(),
         EffectsModule.forRoot(),
-        // This would normally contain the root state, e.g., `StoreModule.forRoot({ app: appReducer })`
+        // // This would normally contain the root state, e.g., `StoreModule.forRoot({ app: appReducer })`
         // StoreModule.forRoot({ auth: authReducer }),
         // EffectsModule.forFeature([AuthEffects]),
-        // StoreDevtoolsModule.instrument({ maxAge: 25 }),
+        StoreDevtoolsModule.instrument({ maxAge: 25 }),
         BrowserAnimationsModule,
         MatPaginatorModule ,
         AppRoutingModule ,
         FormsModule ,
         ReactiveFormsModule ,
         HttpClientModule ,
+        
 
         ProductCardComponent,
+        CartProductCardComponent ,
 
         //modules
-        AdminModule ,
+        // UserModule ,
     ] ,
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BaseUrlInterceptor, multi: true },

@@ -5,10 +5,10 @@
 
     <div class='card-body'>
         <div class='row'>
-            <div class='col-md-4'>
+            <div class='col-md-5'>
                 <img class='center-block img-responsive ' src="../../src/img1.jpg" alt="Description">
             </div>
-            <div class='col-md-8'>
+            <div class='col-md-7'>
                 <div class='row'>
                     <div class='col-md-4'>Product Name:</div>
                     <div class='col-md-8'>{{ product.name }}</div>
@@ -54,7 +54,7 @@
                   </div>
                   <button
                   class="btn btn-info btn-lg mb-3 me-2"
-                
+                  (click)="addToCart(product.id , +quantityInput.value)"
                 >
                   <i class="bi bi-cart-plus"></i>
                   Add 
@@ -69,7 +69,7 @@
         <button class='btn btn-outline-secondary' style='width:80px' (click)="goback()">
             <i class='fa fa-chevron-left'></i> Back
         </button>
-        <button class='btn btn-outline-secondary' style='width:80px' (click)="goback()">
+        <button class='btn btn-outline-secondary' style='width:80px' (click)="gotoCart()">
             <i class='fa fa-shopping-cart'></i> Cart
         </button>
     </div>

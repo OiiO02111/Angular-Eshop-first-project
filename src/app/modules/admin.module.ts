@@ -36,6 +36,7 @@ import { UserCreateComponent } from "../component/Admin/user/user-create/user-cr
 import { ChangeRoleComponent } from "../component/Admin/user/change-role/change-role.component";
 import { Route, RouterModule, Routes } from "@angular/router";
 import { AuthGuard } from "../component/auth/auth.guard";
+import { ActionReducerMap } from "@ngrx/store"; 
 
 const route: Routes = [
     {
@@ -57,6 +58,8 @@ const route: Routes = [
         ]
     }
 ] ;
+
+// export const rootReducers: ActionReducerMap<any> = {};
 
 @NgModule ({
     declarations: [
@@ -84,7 +87,7 @@ const route: Routes = [
         EffectsModule.forFeature([UserEffect]) ,
         StoreModule.forFeature('user', userReducer ) ,
         // EffectsModule.forFeature([AuthEffects]),
-        StoreDevtoolsModule.instrument({ maxAge: 25 }),
+        StoreDevtoolsModule.instrument({ maxAge: 25 ,}),
         
         BrowserAnimationsModule,
         MatPaginatorModule ,

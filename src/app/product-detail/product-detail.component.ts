@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../component/Admin/models/product';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { selectProductList } from '../store/product/product.selector';
+import { CartService } from '../service/cart-service';
 
 @Component({
   selector: 'app-product-detail',
@@ -18,8 +19,10 @@ export class ProductDetailComponent implements OnInit{
 
   constructor(
     private route: ActivatedRoute ,
+    private router: Router ,
     private location: Location ,
-    private store: Store
+    private store: Store ,
+    private cartService: CartService ,
   ) {}
 
     ngOnInit(): void {
@@ -38,5 +41,16 @@ export class ProductDetailComponent implements OnInit{
 
     goback() {
       this.location.back();
+    }
+    gotoCart() {
+      if(localStorage.getItem('token')) {
+        this.router.navigate(['/user/cart/cartdetail']) ;
+      }
+    }
+    addToCart(productId: number, quantity: number) {
+      this.cartService.addToCart(productId , quantity).subscribe((res) => {
+        const cart = res.cart ;
+        console.log('cart =>', cart)
+      })
     }
 }

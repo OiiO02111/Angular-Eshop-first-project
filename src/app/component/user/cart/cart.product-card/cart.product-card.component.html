@@ -1,0 +1,32 @@
+
+<div class="row mb-4 d-flex justify-content-between align-items-center" >
+
+<hr class="my-4">
+<div class="col-md-2 col-lg-2 col-xl-2">
+    <img src="../../../../../src/img1.jpg" class="img-fluid rounded-3" alt="Cotton T-shirt">
+</div>
+<div class="col-md-3 col-lg-3 col-xl-3">
+    <h6 class="text-muted"> id: <b style="color: blue;">{{item.productId}}</b> </h6>
+    <h6 class="mb-0"> {{ item.name }} </h6>
+</div>
+<div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+    <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
+    (click)="reduce(amount.value)">
+        <i class="fas fa-trash-alt"></i>
+    </button>
+
+    <input disabled #amount id="form1" min="0" style="width: 30px;" name="quantity" value="1"  class="form-control form-control-sm" />
+
+    <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
+    (click)="increase(amount.value)">
+        <i class="bi bi-cart-plus"></i>
+    </button>
+</div>
+<div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+    <h6 class="mb-0"> Amount: {{ item.quantity }} </h6>
+</div>
+<div class="col-md-1 col-lg-1 col-xl-1 text-end">
+    <a class="text-muted" (click)="remove()"><i class="fas fa-times"></i></a>
+</div>
+<hr class="my-4">
+</div>

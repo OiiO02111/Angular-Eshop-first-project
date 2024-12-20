@@ -4,7 +4,7 @@ import { Product } from '../component/Admin/models/product';
 
 @Component({
   selector: 'app-product-card-component',
-  imports: [CommonModule],
+  imports: [CommonModule ],
   standalone: true, 
   templateUrl: './product.card.component.html',
   styleUrl: './product.card.component.css'
@@ -20,3 +20,4 @@ export class ProductCardComponent {
     this.gotoProductDetailEvent.emit(this.product) ;
   }
 }
+
