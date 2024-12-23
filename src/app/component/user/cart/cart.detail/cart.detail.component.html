@@ -16,17 +16,23 @@
 
   
                     <hr class="my-4">
+                    <div *ngIf="!cartItems || cartItems.length === 0">
+                      <h2 style="color: lightseagreen;">Empty Cart... Please fill your cart! </h2>
+                      <img src="../../../../../src/img3.jpg" style="width: 100%;" alt="">
+                    </div>
   
                     <div *ngFor="let item of cartItems; let i = index; ">
                       <app-cart-product-card
                       [item]="item" 
                       (listenAmountEvent)="setAmount($event)"
                       (reduceCartItemEvent)="reduceItem(item)"
+                      (removeCartItemEvent)="removeItem(item)"
+                      (increaseCartItemEvent)="increaseItem(item)"
                       >
                       <!-- [item]="item" 
 
                       (increaseCartItemEvent)="increaseItem()"
-                      (removeCartItemEvent)="removeItem()" -->
+                       -->
                       </app-cart-product-card>
                     </div>
   

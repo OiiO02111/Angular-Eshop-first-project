@@ -3,6 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CartService } from '../../../../service/cart-service';
 import { Observable, observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import * as CartActions from '../../../../store/cart/cart.action' ;
+import { selectCart, selectCartItems } from '../../../../store/cart/cart.select';
 
 @Component({
   selector: 'app-cart.detail',
@@ -19,21 +22,20 @@ export class CartDetailComponent implements OnInit {
   amount: number = 1 ;
 
   constructor(
+     private store: Store ,
      private router: Router ,
      private location: Location ,
      private cartService: CartService ,
   ) {}
 
   ngOnInit(): void {
-    this.cartProducts$ = this.cartService.getCartProducts() ;
-    this.cartProducts$.subscribe(
-      ( response ) => {
-        console.log( 'cart response => ', response )
-        this.cartItems = response.cartItems ;
-        this.totalprice = response.cart.totalCost ;
-        console.log(this.cartItems)
-      }
-    )
+    this.store.dispatch(CartActions.getCart());
+    this.store.select(selectCart).subscribe((cart) => {
+      this.totalprice = cart.totalCost ;
+    })
+    this.store.select(selectCartItems).subscribe((items) => {
+      this.cartItems = items ;
+    })
 
   }
 
@@ -43,13 +45,47 @@ export class CartDetailComponent implements OnInit {
 
   }
   reduceItem(item: any) {
+    console.log('para-item', item)
+    const payload = {
+      productId: item.productId,
+      amount: this.amount ,
+    }
+    console.log('payload', payload)
     console.log('reduce', this.amount)
-    this.cartService.removeCartItem(item , this.amount).subscribe((response) => {
-
-      this.cartItems = response.CartItemState ;
-      this.totalprice = response.cartstate.totalCost ;
-      console.log('response', response.CartItemState)
+    this.store.dispatch(CartActions.reduceItem(payload)) ;
+    this.store.select(selectCart).subscribe((cart) => {
+      this.totalprice = cart.totalCost ;
     }) ;
+    this.store.select(selectCartItems).subscribe((items) => {
+      this.cartItems = items ;
+    })
+  }
+  removeItem(item: any) {
+    console.log('RemoveItem id', item)
+    this.store.dispatch(CartActions.removeItem({productId: item.productId})) ;
+    this.store.dispatch(CartActions.getCart())
+    this.store.select(selectCart).subscribe((cart) => {
+      this.totalprice = cart.totalCost ;
+    }) ;
+    this.store.select(selectCartItems).subscribe((items) => {
+      this.cartItems = items ;
+    })
+  }
+  increaseItem(item: any) {
+    console.log('para-item', item)
+    const payload = {
+      productId: item.productId,
+      quantity: this.amount ,
+    }
+    console.log('payload', payload)
+    console.log('reduce', this.amount)
+    this.store.dispatch(CartActions.addToCart(payload)) ;
+    this.store.select(selectCart).subscribe((cart) => {
+      this.totalprice = cart.totalCost ;
+    }) ;
+    this.store.select(selectCartItems).subscribe((items) => {
+      this.cartItems = items ;
+    })
   }
 
 }

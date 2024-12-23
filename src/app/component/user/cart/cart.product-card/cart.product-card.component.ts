@@ -14,7 +14,7 @@ export class CartProductCardComponent {
   @Input() item : any = {} ;
   @Output() increaseCartItemEvent = new EventEmitter<any>() ;
   @Output() reduceCartItemEvent = new EventEmitter<any>() ;
-  @Output() removeItemCartEvent = new EventEmitter<any>() ;
+  @Output() removeCartItemEvent = new EventEmitter<any>() ;
   @Output() listenAmountEvent = new EventEmitter<any>() ;
   
   constructor () {
@@ -37,7 +37,7 @@ export class CartProductCardComponent {
 
   } ;
   remove() {
-    this.removeItemCartEvent.emit(this.item)
+    this.removeCartItemEvent.emit(this.item)
   } ;
 
 }

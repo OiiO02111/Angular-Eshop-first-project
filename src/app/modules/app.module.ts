@@ -40,6 +40,8 @@ import { ProductCardComponent } from "../product.card/product.card.component";
 import { ProductDetailComponent } from "../product-detail/product-detail.component";
 import { CartDetailComponent } from "../component/user/cart/cart.detail/cart.detail.component";
 import { CartProductCardComponent } from "../component/user/cart/cart.product-card/cart.product-card.component";
+import { CartEffect } from "../store/cart/cart.effect";
+import { cartReducer } from "../store/cart/cart.reducer";
 
 @NgModule ({
     declarations: [
@@ -59,6 +61,8 @@ import { CartProductCardComponent } from "../component/user/cart/cart.product-ca
         // // This would normally contain the root state, e.g., `StoreModule.forRoot({ app: appReducer })`
         // StoreModule.forRoot({ auth: authReducer }),
         // EffectsModule.forFeature([AuthEffects]),
+        StoreModule.forFeature('cart', cartReducer ),
+        EffectsModule.forFeature([CartEffect]) ,
         StoreDevtoolsModule.instrument({ maxAge: 25 }),
         BrowserAnimationsModule,
         MatPaginatorModule ,

@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from '../component/Admin/models/product';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
-import { Store } from '@ngrx/store';
+import { Store, props } from '@ngrx/store';
 import { selectProductList } from '../store/product/product.selector';
 import { CartService } from '../service/cart-service';
+
+import * as CartAction from '../store/cart/cart.action'
 
 @Component({
   selector: 'app-product-detail',
@@ -48,9 +50,10 @@ export class ProductDetailComponent implements OnInit{
       }
     }
     addToCart(productId: number, quantity: number) {
-      this.cartService.addToCart(productId , quantity).subscribe((res) => {
-        const cart = res.cart ;
-        console.log('cart =>', cart)
-      })
+      const payload: {productId: number , quantity: number} = {
+        productId ,
+        quantity ,
+      };
+      this.store.dispatch(CartAction.addToCart( payload )) ;
     }
 }

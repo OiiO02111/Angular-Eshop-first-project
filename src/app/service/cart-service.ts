@@ -44,13 +44,17 @@ export class CartService implements OnInit{
         return this.http.get('/api/cart', { headers: this.headers })
     }
 
-    removeCartItem(item: any, amount: number) : Observable<any> {
-        console.log('Cartservice removecartItem')
+    reduceCartItem(productId: any, amount: number) : Observable<any> {
+        console.log('Cartservice reduce cartItem', productId)
         const payload = {
-            productId : item.productId ,
+            productId ,
             quantity: amount ,
         }
         console.log( 'payload', payload)
         return this.http.post('/api/cart/cartitem', payload , { headers: this.headers })
+    }
+    removeCartItem(productId: number) : Observable<any> {
+        console.log('Here is the removeItem function!', productId)
+        return this.http.delete(`/api/cart/cartitem/${productId}`,  { headers: this.headers })
     }
 }
