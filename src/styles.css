@@ -19,6 +19,7 @@ body {
     display: flex;
     flex-direction: row;
     height: auto;
+    margin-bottom: 270px !important;
 }
 
 .left {
@@ -28,7 +29,7 @@ body {
     align-items: center;
     width: 20%;
     height: auto ;
-    background-color: #f8f9fa;
+    background-color: rgb(13, 110, 253);
 }
 
 .right {

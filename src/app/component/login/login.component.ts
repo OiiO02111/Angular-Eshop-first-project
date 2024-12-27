@@ -6,6 +6,7 @@ import { jwtDecode } from 'jwt-decode';
 import { UserAuthService } from '../../service/user-auth.service';
 import * as AuthActions from '../../store/auth/auth.actions' ;
 import { selectAuthError, selectAuthToken } from '../../store/auth/auth.selectors';
+import { AppComponent } from '../../app.component';
 
 
 @Component({
@@ -22,6 +23,7 @@ export class LoginComponent implements OnInit{
  
   constructor(
         public userAuthService: UserAuthService, 
+        private appComponent: AppComponent ,
         private router: Router ,
         private store: Store ,   
       ) { }
@@ -62,6 +64,7 @@ export class LoginComponent implements OnInit{
         this.router.navigateByUrl('/admin/dashboard');
         const decoded: any = jwtDecode(data.token);
         console.log('decode', decoded)
+        this.appComponent.updateUsernameFromToken(data.token);
         return data;
       }),
       error: (error => {

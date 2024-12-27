@@ -1,0 +1,25 @@
+.fixed-footer {
+    position: fixed; /* Makes the footer fixed to a specific location */
+    bottom: 0; /* Aligns the footer to the bottom of the viewport */
+    width: 100%; /* Ensures the footer spans the full width */
+    z-index: 100; /* Keeps the footer above other elements if overlapping occurs */
+  }
+
+.mine:hover {
+  background-color: black;
+  color: white;
+}
+
+.username {
+  color: white;
+  font-size: 20px ;
+  font-weight: bold;
+  margin-right: 20px;
+  text-shadow:  0px 0px 10px white;
+
+}
+.change {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
